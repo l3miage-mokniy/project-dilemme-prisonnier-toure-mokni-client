@@ -123,6 +123,10 @@
               "devServerTarget": "dilemme-client-toure-mokni:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'dilemme-client-toure-mokni';
+  id_joueur = -1;
 }

@@ -1,0 +1,10 @@
+<div *ngIf="!gameCreated">
+  <label for="name">Saisir un nombre de tours : </label>
+  <input type="number" min=1 id="name" name="name" size="10" [(ngModel)]="nb_tours" />
+  &nbsp;
+  <input type="button" (click)="createRencontre()" value="CREER UNE RENCONTRE" />
+</div>
+
+<div *ngIf="gameCreated">
+  <h2>PARTIE CREE</h2>
+</div>

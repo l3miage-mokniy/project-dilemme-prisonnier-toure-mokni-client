@@ -1,0 +1,7 @@
+<p>Voici les parties actuellement ouvertes :</p>
+<input type="button" (click)="getRencontreOpen()" value="ACTUALISER LA LISTE" />
+<div *ngIf="lesRencontresDispo_Obs | async as lesRencontres;">
+  <div *ngFor="let rencontre of lesRencontres;">
+    {{rencontre}} - <input type="button" (click)="joinThisGame(getIdRencontre(rencontre))" value="REJOINDRE CETTE PARTIE" />
+  </div>
+</div>

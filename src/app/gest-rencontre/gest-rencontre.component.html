@@ -1,0 +1,29 @@
+<div *ngIf="boolNotInGame_Obs | async as notInGame; else elseBlock">
+  <p>Souhaitez-vous créer une partie ou rejoindre une partie ?</p>
+
+  <input type="button" (click)="createGame()" value="CREER UNE PARTIE" />
+  &nbsp;
+  <input type="button" (click)="joinGame()" value="REJOINDRE UNE PARTIE" />
+
+  <div *ngIf="boolCreateGame">
+    <h2>CREER UNE PARTIE</h2>
+    <app-create-rencontre
+      (id_game)="newGame($event)"
+      [id_joueur]="id_joueur"
+    ></app-create-rencontre>
+  </div>
+  <div *ngIf="boolJoinGame">
+    <h2>REJOINDRE UNE PARTIE</h2>
+    <app-join-rencontre
+    (id_game)="newGame($event)"
+    [id_joueur]="id_joueur"
+    ></app-join-rencontre>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <h2>Vous êtes actuellement dans la partie : {{id_game}} !</h2>
+  <app-play-rencontre
+  (id_game)="newGame($event)"
+  [id_joueur_game]="[id_joueur,id_game.toString()]"></app-play-rencontre>
+</ng-template>

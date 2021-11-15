@@ -1,0 +1,11 @@
+<div *ngIf="!profilCreated">
+    <label for="name">Votre pseudo : </label>
+    <input type="text" id="name" name="name" size="10" [(ngModel)]="name" />
+    &nbsp;
+    <input type="button" (click)="createProfil()" value="CREER MON PROFIL" />
+</div>
+
+<div *ngIf="profilCreated">
+  Vout êtes connecté avec le pseudo : {{ name }} et l'ID : {{ id_joueur }}
+  <app-gest-rencontre [id_joueur]="id_joueur"></app-gest-rencontre>
+</div>

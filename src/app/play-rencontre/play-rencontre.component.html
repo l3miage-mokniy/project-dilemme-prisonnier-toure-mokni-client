@@ -1,0 +1,39 @@
+
+<div *ngIf="gameFinish | async as gameIsFinish; else gameNotFinishYet">
+  <h3>PARTIE FINIE</h3>
+  {{ score }}
+  <input type="button" (click)="goBackMenu()" value="RETOUR AU MENU" />
+</div>
+
+
+<ng-template #gameNotFinishYet>
+
+<div *ngIf="gameStart | async as gameHaveStart; else elseBlock">
+  <div>
+    <label for="name">Pour quitter veuillez choisir une stratégie: </label>
+    <input
+      type="number"
+      min="0"
+      max="18"
+      id="name"
+      name="name"
+      size="10"
+      [(ngModel)]="id_strategy"
+    />
+    &nbsp;
+    <input type="button" (click)="leaveGame()" value="QUITTER LA PARTIE" />
+  </div>
+  <p>La partie a commencée</p>
+  <div>
+    <p>{{ score }}</p><br/>
+    <input type="button" (click)="trahir()" value="TRAHIR" /> &nbsp;
+    <input type="button" (click)="cooperer()" value="COOPERER" />
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <p>En attente de joueurs ....</p>
+</ng-template>
+
+
+</ng-template>

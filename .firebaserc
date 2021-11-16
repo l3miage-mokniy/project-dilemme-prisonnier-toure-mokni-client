@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "dilemme-toure-mokni": {
+      "hosting": {
+        "dilemme-client-toure-mokni": [
+          "dilemme-toure-mokni"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "dilemme-toure-mokni"
+  }
+}

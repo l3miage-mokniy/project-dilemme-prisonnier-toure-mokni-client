@@ -20,7 +20,7 @@ export class GestProfilComponent implements OnInit {
 
   async createProfil() {
     if(this.name.length > 0) {
-      const response = await fetch(this.varGlob.urlServer+'/new_player/'+this.name);
+      const response = await fetch(this.varGlob.urlServer+'/new-player/'+this.name);
       this.id_joueur = await response.text();
       this.profilCreated = true;
     }

@@ -12,7 +12,10 @@ export class PlayRencontreComponent implements OnInit {
   @Input() id_joueur_game : string[] = [];
   @Output() id_game = new EventEmitter<number>();
   id_strategy : number = 0;
+  nombreTour : string = "1";
+  firstTurn : boolean = true;
   score : string = "";
+  haveChoose : boolean = false;
   public gameStart: Subject< boolean > = new Subject< boolean >();
   public gameFinish: Subject< boolean > = new Subject< boolean >();
 
@@ -42,14 +45,28 @@ export class PlayRencontreComponent implements OnInit {
   }
 
   async trahir() {
+    this.haveChoose = true;
     const response = await fetch(this.varGlob.urlServer+'/play/'+this.id_joueur_game[0]+'&'+this.id_joueur_game[1]+'&0');
-    this.score = await response.text();
+    let returnVal = await response.text();
+    this.score = returnVal.split('#')[0];
+    this.nombreTour = returnVal.split('#')[1];
+    this.haveChoose = false;
+    if(this.firstTurn) {
+      this.firstTurn=false;
+    }
     this.checkGameFinished();
   }
 
   async cooperer() {
+    this.haveChoose = true;
     const response = await fetch(this.varGlob.urlServer+'/play/'+this.id_joueur_game[0]+'&'+this.id_joueur_game[1]+'&1');
-    this.score = await response.text();
+    let returnVal = await response.text();
+    this.score = returnVal.split('#')[0];
+    this.nombreTour = returnVal.split('#')[1];
+    this.haveChoose = false;
+    if(this.firstTurn) {
+      this.firstTurn=false;
+    }
     this.checkGameFinished();
   }
 

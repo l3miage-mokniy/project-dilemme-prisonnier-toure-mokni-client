@@ -1,14 +1,30 @@
 
 <div *ngIf="gameFinish | async as gameIsFinish; else gameNotFinishYet">
-  <h3>PARTIE FINIE</h3>
+  <div style="text-align:center;">
+    <h3>PARTIE FINIE</h3>
+  </div>
   {{ score }}
-  <input type="button" (click)="goBackMenu()" value="RETOUR AU MENU" />
+  <div style="text-align:center;">
+    <br/>
+    <input type="button" (click)="goBackMenu()" value="RETOUR AU MENU" />
+  </div>
 </div>
-
 
 <ng-template #gameNotFinishYet>
 
 <div *ngIf="gameStart | async as gameHaveStart; else elseBlock">
+  <div *ngIf="firstTurn">
+    <p>La partie a commencée</p>
+  </div>
+  <p><b>Tour numéro : {{ nombreTour }}</b></p>
+  <p>{{ score }}</p><br/>
+  <div style="text-align:center;">
+    <input type="button" [disabled]="haveChoose" (click)="trahir()" value="TRAHIR" /> &nbsp;
+    <input type="button" [disabled]="haveChoose" (click)="cooperer()" value="COOPERER" />
+  </div>
+  <br/>
+  <hr/>
+  <br/>
   <div>
     <label for="name">Pour quitter veuillez choisir une stratégie: </label>
     <input
@@ -22,12 +38,6 @@
     />
     &nbsp;
     <input type="button" (click)="leaveGame()" value="QUITTER LA PARTIE" />
-  </div>
-  <p>La partie a commencée</p>
-  <div>
-    <p>{{ score }}</p><br/>
-    <input type="button" (click)="trahir()" value="TRAHIR" /> &nbsp;
-    <input type="button" (click)="cooperer()" value="COOPERER" />
   </div>
 </div>
 

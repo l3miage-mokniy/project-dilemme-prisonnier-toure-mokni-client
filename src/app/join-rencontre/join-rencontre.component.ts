@@ -9,7 +9,7 @@ import { VariableGlobalesService } from '../variableGlobales.service';
 })
 export class JoinRencontreComponent implements OnInit {
 
-  @Input() id_joueur = ''; // decorate the property with @Input()
+  @Input() id_joueur = '';
   lesRencontresTab: string[] = [];
   @Output() id_game = new EventEmitter<number>();
   public lesRencontresDispo_Obs: Subject< string[] > = new Subject< string[] >();
@@ -24,7 +24,9 @@ export class JoinRencontreComponent implements OnInit {
   async getRencontreOpen() {
       const response = await fetch(this.varGlob.urlServer+'/party-open');
       let lesRencontres = await response.text();
-      this.lesRencontresDispo_Obs.next(lesRencontres.split("#"));
+      if(lesRencontres != "") {
+        this.lesRencontresDispo_Obs.next(lesRencontres.split("#"));
+      }
   }
 
   getIdRencontre(uneRencontre :string) {

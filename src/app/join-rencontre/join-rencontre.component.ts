@@ -26,6 +26,8 @@ export class JoinRencontreComponent implements OnInit {
       let lesRencontres = await response.text();
       if(lesRencontres != "") {
         this.lesRencontresDispo_Obs.next(lesRencontres.split("#"));
+      } else {
+        this.lesRencontresDispo_Obs.next([]);
       }
   }
 

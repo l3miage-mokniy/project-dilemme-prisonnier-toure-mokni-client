@@ -25,18 +25,30 @@
   <br/>
   <hr/>
   <br/>
-  <div>
-    <label for="name">Pour quitter veuillez choisir une stratégie: </label>
-    <input
-      type="number"
-      min="0"
-      max="18"
-      id="name"
-      name="name"
-      size="10"
-      [(ngModel)]="id_strategy"
-    />
-    &nbsp;
+  <label for="strat-select">Pour quitter,veuillez choisir une stratégie: </label>
+  <select [(ngModel)]="id_strategy" name="strat" id="strat-select">
+      <option value="0">Cooperer</option>
+      <option value="1">Trahir</option>
+      <option value="2">Donnant donnant</option>
+      <option value="3">Aléatoire</option>
+      <option value="4">Donnant deux donnant aléatoire</option>
+      <option value="5">Donnant deux donnant</option>
+      <option value="6">Donnant donnant soupconneux</option>
+      <option value="7">Pacificateur naif</option>
+      <option value="8">Vrai pacificateur</option>
+      <option value="9">Rancunier</option>
+      <option value="10">Sondeur naif</option>
+      <option value="11">Sondeur repentant</option>
+      <option value="12">Vrai pacificateur</option>
+      <option value="13">Adaptatif</option>
+      <option value="14">Pavlov</option>
+      <option value="15">Pavlov aleatoire</option>
+      <option value="16">Graduel</option>
+      <option value="17">Rancunier doux</option>
+  </select>
+  <br/>
+  <br/>
+  <div style="text-align:center;">
     <input type="button" (click)="leaveGame()" value="QUITTER LA PARTIE" />
   </div>
 </div>

@@ -18,10 +18,16 @@
   </div>
   <p><b>Tour numéro : {{ nombreTour }}</b></p>
   <p>{{ score }}</p><br/>
-  <div style="text-align:center;">
-    <input type="button" [disabled]="haveChoose" (click)="trahir()" value="TRAHIR" /> &nbsp;
-    <input type="button" [disabled]="haveChoose" (click)="cooperer()" value="COOPERER" />
+  <div style="text-align:center;" *ngIf="haveChoose; else makeChoice" >
+    <p><b>Votre adversaire fait son choix...</b></p>
+    <div class="loaderPlaying">Loading...</div>
   </div>
+  <ng-template #makeChoice>
+    <div style="text-align:center;">
+      <input type="button" [disabled]="haveChoose" (click)="trahir()" value="TRAHIR" /> &nbsp;
+      <input type="button" [disabled]="haveChoose" (click)="cooperer()" value="COOPERER" />
+    </div>
+  </ng-template>
   <br/>
   <hr/>
   <br/>
@@ -58,6 +64,7 @@
 
 <ng-template #elseBlock>
   <p>En attente de joueurs ....</p>
+  <div class="loader">Loading...</div>
 </ng-template>
 
 
